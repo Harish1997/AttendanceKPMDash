@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firebase app</title>
+</head>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-functions.js"></script>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var config = {
+    apiKey: "AIzaSyD0xf-Ws5J3TIP0AOkjYtu9iyzAsaoCjso",
+    authDomain: "e-beat-kpm.firebaseapp.com",
+    databaseURL: "https://e-beat-kpm.firebaseio.com",
+    projectId: "e-beat-kpm",
+    storageBucket: "e-beat-kpm.appspot.com",
+    messagingSenderId: "1011778145817"
+  };
+  firebase.initializeApp(config);
+
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+
+var desertRef = storageRef.child('images/01824515-940c-4585-99e6-fc3d9ff1caa3');
+
+if(desertRef==null){
+	console.log("error");
+}
+else{
+	console.log("file pointed");
+	console.log(desertRef);
+	desertRef.delete().then(function() {
+		console.log("File has been deleted successfully");
+  // File deleted successfully
+}).catch(function(error) {
+  // Uh-oh, an error occurred!
+  console.log(error);
+});
+}
+
+</script>
+</html>
