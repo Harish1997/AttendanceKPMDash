@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firebase app</title>
+</head>
+<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var config = {
+    apiKey: "AIzaSyDv8ahTS--MN58fmRvSrRvksXfb_uW5mPU",
+    authDomain: "testfire-e0fcd.firebaseapp.com",
+    databaseURL: "https://testfire-e0fcd.firebaseio.com",
+    projectId: "testfire-e0fcd",
+    storageBucket: "testfire-e0fcd.appspot.com",
+    messagingSenderId: "181343290382"
+  };
+  firebase.initializeApp(config);
+
+  var database=firebase.database();
+
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  //create reference to the database
+  var ref=database.ref('list');
+  //defines functions on getting the value
+  ref.on('value',gotData,errData)
+//gets values from the database
+  function gotData(data){
+      //console.log(data.val());
+      //getting array of keys
+      var scores=data.val();
+      var keys=Object.keys(scores);
+      console.log(keys);  //Gives an array output of the keys
+      for(var i=0;i<keys.length;i++){
+          var k=keys[i];
+          var url=scores[k].key;  //Gives the values in those keys
+          console.log(url);       
+      }
+  }
+
+  function errData(err){
+      console.log("Error!");
+      console.log(err);
+}
+</script>
+</html>
